@@ -1,9 +1,11 @@
 //import Button from "./components/Button";
 //import  Card  from "./components/Card";
 import  imageOne from './imageOne.png';
-import imageTwo from './imageTwo.png';
+import imageTwo from './Media.jpg';
 //import {NavigationMenu,NavigationMenuItem,NavigationMenuLink,NavigationMenuList,} from "./components/NavigationMenu";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { useState } from 'react';
+import {motion} from 'framer-motion';
 import React from "react";
 
 
@@ -11,7 +13,7 @@ import React from "react";
 
 export default function FrameOne() {
   // Navigation items data
- 
+ const [isHover, setIsHover] = useState(false);
 
   // Review profiles data
   //const reviewProfiles = [1, 2, 3, 4, 5]; // Representing the 5 profile images
@@ -32,10 +34,7 @@ export default function FrameOne() {
               </h1>
             </div>
 
-            {/* Navigation */}
-            
-
-            {/* Download CV Button */}
+           
             
             
             
@@ -57,18 +56,25 @@ export default function FrameOne() {
           
                 </div>
 
-                {/* Vector Image Placeholder */}
-                <div className="relative mt-20">
-                  <img
-                    src={imageOne}
-                    alt="Decorative vector"
-                    className="w-[509px] h-[229px]"
-                  />
-                  
-                </div>
+
+
+             {/* Vector Image Placeholder */}
+             <div className="relative mt-20">
+               <img
+                 src={imageOne}
+                 alt="Decorative vector"
+                 className="w-[509px] h-[229px]"
+               />
+               
+             </div>
+
+
+
+
+                
 
                 {/* Experience */}
-                <div className="flex items-center gap-2.5 mt-16">
+                <div style={{marginBottom:"100px"}}className="flex items-center gap-2.5 mt-16">
                   <span className="font-semibold text-x-2 text-4xl leading-[46px] tracking-[0]">
                     02
                   </span>
@@ -79,35 +85,31 @@ export default function FrameOne() {
                   </span>
                 </div>
 
-                {/* Social Links */}
-                <div className="flex space-x-6 mt-24">
-                  <Facebook className="text-x-5 h-6 w-6" />
-                  <Instagram className="text-x-5 h-6 w-6" />
-                  <Twitter className="text-x-5 h-6 w-6" />
-                  <Linkedin className="text-x-5 h-6 w-6" />
-                </div>
+              
               </div>
 
-              {/* Center - Profile Image */}
+              {/* Center - Profile Image  */}
+              <div style={{ overFlow:"clip"}} onMouseEnter={(e) =>setIsHover(true)}
+                onMouseLeave={(e) =>setIsHover(false)}>
               <div className="absolute left-1/2 transform -translate-x-1/4 top-[345px]">
                 <div className="relative">
                   <div className="w-[482px] h-[482px] rounded-full bg-x-2/10"></div>
-                  <div className="absolute top-[5px] left-[15px] w-[472px] h-[471px] rounded-full overflow-hidden">
+                  <motion.div animate ={{scale: isHover?1.2:1,}} transition={{ease: 'easeIn', duration:0.2,}} className="absolute top-[5px] left-[15px] w-[472px] h-[471px] rounded-full overflow-hidden">
                     <img
                       src={imageTwo}
                       alt="John Deo profile"
                       className="w-full h-full object-cover"
                     />
-                  </div>
+                  </motion.div>
                   
                 </div>
-              </div>
+              </div></div>
 
               {/* Right Content */}
               <div className="flex flex-col items-end">
                 {/* Tagline */}
                 <p className="font-normal text-x-5 text-lg text-right leading-7 tracking-[0] max-w-[347px]">
-                  I design beautifully simple things, and I love what i do.
+                  I code and draw.
                 </p>
 
                 {/* Reviews Card */}
